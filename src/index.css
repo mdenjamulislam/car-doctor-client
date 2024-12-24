@@ -2,7 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
     font-family: "Inter", sans-serif;
+}
+
+@layer components {
+    /* Heading */
+    .heading-one {
+    }
+    .heading-two {
+        @apply text-xl font-bold text-dark1 md:text-3xl lg:text-5xl;
+    }
+    .heading-three {
+    }
+    .heading-four {
+    }
+    .heading-five {
+    }
+    .heading-six {
+    }
+
+
+    .sec-space {
+        @apply py-6 md:py-10 lg:py-14 xl:py-16;
+    }
 }

@@ -1,8 +1,12 @@
 import loginHero from "../../assets/images/login/login.svg";
 import { Card, Input, Button, CardBody, CardHeader, Typography, IconButton } from "@material-tailwind/react";
+import { useContext } from "react";
 import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa6";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Signup = () => {
+    const { createUser } = useContext(AuthContext);
+
     const handleSignup = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -10,7 +14,14 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, email, password);
+        createUser(email, password)
+            .then((user) => {
+                console.log(user);
+                console.log("User created successfully");
+            })
+            .catch((error) => {
+                console.error(error.message);
+            });
     };
 
     return (

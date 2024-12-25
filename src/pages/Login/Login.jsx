@@ -2,6 +2,15 @@ import loginHero from "../../assets/images/login/login.svg";
 import { Card, Input, Button, CardBody, CardHeader, Typography, IconButton } from "@material-tailwind/react";
 import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa6";
 const Login = () => {
+    
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(email, password);
+    }
     return (
         <section className="py-8">
             <div className="container">
@@ -16,7 +25,7 @@ const Login = () => {
                             </Typography>
                         </CardHeader>
                         <CardBody>
-                            <form action="#" className="flex flex-col gap-4">
+                            <form onSubmit={handleLogin} className="flex flex-col gap-4">
                                 <div>
                                     <label htmlFor="email">
                                         <Typography variant="small" color="blue-gray" className="mb-2 block font-medium">
@@ -55,7 +64,7 @@ const Login = () => {
                                         }}
                                     />
                                 </div>
-                                <Button size="lg" color="gray" fullWidth>
+                                <Button type="submit" size="lg" color="gray" fullWidth>
                                     Login
                                 </Button>
                             </form>

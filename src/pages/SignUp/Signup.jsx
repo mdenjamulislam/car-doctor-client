@@ -1,7 +1,8 @@
-import React from 'react';
+import loginHero from "../../assets/images/login/login.svg";
+import { Card, Input, Button, CardBody, CardHeader, Typography, IconButton } from "@material-tailwind/react";
+import { FaFacebookF, FaLinkedinIn, FaGoogle } from "react-icons/fa6";
 
 const Signup = () => {
-
     const handleSignup = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -11,7 +12,6 @@ const Signup = () => {
 
         console.log(name, email, password);
     };
-
 
     return (
         <section className="py-8">

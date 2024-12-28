@@ -17,7 +17,7 @@ const Services = () => {
     console.log(services);
 
     return (
-        <section>
+        <section className="sec-space">
             <div className="container">
                 {/* Section-title */}
                 <div className="mx-auto w-full text-center md:max-w-2xl">

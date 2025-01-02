@@ -1,27 +1,18 @@
-
+import { useEffect, useState } from "react";
 import TeamCard from "./TeamCard";
 
 const Teams = () => {
-    const teams = [
-        {
-            id: 1,
-            name: "John Doe",
-            role: "CEO",
-            image: "../../../assets/images/1.jpg",
-        },
-        {
-            id: 2,
-            name: "Jane Doe",
-            role: "CTO",
-            image: "../../../assets/images/2.jpg",
-        },
-        {
-            id: 3,
-            name: "John Doe",
-            role: "Engine Expert",
-            image: "../../../assets/images/3.jpg",
-        },
-    ];
+    const [teams, setTeams] = useState([]);
+
+    useEffect(() => {
+        const fetchTeams = async () => {
+            const response = await fetch("http://localhost:5000/teams");
+            const data = await response.json();
+            setTeams(data);
+        };
+        fetchTeams();
+    }, []);
+    
     return (
         <section className="sec-space">
             <div className="container">
@@ -34,7 +25,9 @@ const Teams = () => {
 
                 {/* Teams */}
                 <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {teams.map((team) => <TeamCard key={team.id} team={team} />)}
+                    {teams.map((team) => (
+                        <TeamCard key={team.id} team={team} />
+                    ))}
                 </div>
             </div>
         </section>

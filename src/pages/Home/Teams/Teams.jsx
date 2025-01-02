@@ -23,10 +23,9 @@ const Teams = () => {
                     <p className="mt-3 md:mt-4">the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                 </div>
 
-                {/* Teams */}
                 <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {teams.map((team) => (
-                        <TeamCard key={team.id} team={team} />
+                        <TeamCard key={team._id} team={team} />
                     ))}
                 </div>
             </div>

@@ -13,9 +13,11 @@ module.exports = withMT({
         primary: "#151515",
         accent: "#FF3811",
         dark1: "#151515",
-        dark2: "#737373",
+        dark2: "#444444",
+        dark3: "#737373",
         dark6: "#E8E8E8",
-        dark7: "#F3F3F3"
+        dark7: "#F3F3F3",
+        "overlay-dark": "rgba(0, 0, 0, 0.6)",
       },
       container: {
         center: true,

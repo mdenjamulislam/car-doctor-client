@@ -10,7 +10,7 @@ const Breadcrumb = ({title, bg}) => {
                     <h1 className="heading-one text-white">{title}</h1>
                 </div>
                 <div className="bottom-0 inline-flex w-auto bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${breadcrumbsBg})` }}>
-                    <div className="flex items-center gap-2 px-8 py-2 text-white">
+                    <div className="w-72 flex items-center justify-center gap-2 py-2 text-white">
                         <Link to="/" className="hover:underline">
                             Home
                         </Link>

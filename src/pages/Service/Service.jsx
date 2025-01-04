@@ -1,8 +1,9 @@
-import { Button, IconButton } from "@material-tailwind/react";
+import { Breadcrumbs, Button, IconButton } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaArrowRight, FaDownload } from "react-icons/fa6";
 import { FaRegFilePdf } from "react-icons/fa";
+import breadcrumbsBg from "../../assets/breadcrumbs.png";
 
 const Service = () => {
     const [serviceTitle, setServiceTitle] = useState([]);
@@ -18,12 +19,25 @@ const Service = () => {
     console.log(serviceTitle);
     return (
         <div className="container">
-            <div className="overflow-hidden rounded-lg bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-                <div className="bg-overlay-dark px-5 py-10 md:px-10 lg:px-20 lg:py-20">
-                    <h1 className="heading-one text-white">{title}</h1>
+            <div className="relative overflow-hidden rounded-lg bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
+                <div className="flex flex-col items-center justify-center bg-overlay-dark">
+                    <div className="px-5 py-10 md:px-12 lg:px-24 lg:py-28">
+                        <h1 className="heading-one text-white">{title}</h1>
+                    </div>
+                    <div className="bottom-0 inline-flex w-auto bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${breadcrumbsBg})` }}>
+                        <div className="flex items-center gap-2 px-8 py-2 text-white">
+                            <Link to="/" className="hover:underline">
+                                Home
+                            </Link>
+                            /
+                            <Link to={`/services/{$_id}`} className="opacity-60 hover:underline hover:opacity-100">
+                                {title}
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="my-10 grid grid-cols-1 gap-6 lg:grid-cols-3 ">
+            <div className="my-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
                 <div className="col-span-full space-y-4 md:space-y-6 lg:col-span-2">
                     <figure>
                         <img src={img} alt={title} className="h-auto w-full rounded-md object-cover md:h-60 lg:h-[400px]" />
@@ -33,7 +47,7 @@ const Service = () => {
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
                         {facility.map((item, index) => (
                             <div key={index} className="space-y-2 rounded-lg border-t-4 border-accent bg-dark7 p-4 md:p-6">
-                                <h4 className="text-dark3 text-base font-semibold md:text-lg">{item.name}</h4>
+                                <h4 className="text-base font-semibold text-dark3 md:text-lg">{item.name}</h4>
                                 <p className="text-dark3">{item.details}</p>
                             </div>
                         ))}

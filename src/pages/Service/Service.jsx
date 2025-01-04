@@ -117,9 +117,11 @@ const Service = () => {
 
                     <div className="space-y-6">
                         <h3 className="heading-three">Price ${price}</h3>
-                        <Button size="lg" className="w-full bg-accent text-center">
-                            Proceed Checkout
-                        </Button>
+                        <Link to={`/checkout/${_id}`}>
+                            <Button size="lg" className="w-full bg-accent text-center">
+                                Proceed Checkout
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>

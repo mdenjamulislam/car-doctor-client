@@ -9,7 +9,7 @@ const Checkout = () => {
     const { _id, title, price, service_id, img } = service;
     const { user } = useContext(AuthContext);
 
-    const handleOrder = (e) => {
+    const handleBooking = (e) => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -18,24 +18,39 @@ const Checkout = () => {
         const message = form.message.value;
         const service_name = form.service_name.value;
         const price = form.price.value;
+        const date = form.date.value;
 
-        const order = {
+        const bookingInfo = {
             customerName: name,
             phoneNumber: phone_number,
             email: email,
-            sercieTitle: service_name,
-            price,
-            message,
             service_id,
+            sercieTitle: service_name,
+            img,
+            price,
+            date,
+            message,
         };
 
-        console.log(order);
+        console.log(bookingInfo);
+
+        fetch("http://localhost:5000/booking", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(bookingInfo),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            });
     };
     return (
         <div className="container">
             <Breadcrumb title="Checkout" bg={img} />
             <Card color="transparent" shadow={true} className="my-10 rounded-2xl bg-dark7 p-5 md:my-14 md:p-10 lg:my-16 lg:p-14 xl:p-20">
-                <form onSubmit={handleOrder} className="w-full">
+                <form onSubmit={handleBooking} className="w-full">
                     <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                         <Input
                             name="name"
@@ -95,10 +110,11 @@ const Checkout = () => {
                                 className: "before:content-none after:content-none pl-4",
                             }}
                         />
+                        <input type="date" name="date" className="w-full !border-white bg-white px-4 text-dark2 focus:!border-gray-300" />
                         <Textarea name="message" placeholder="Your Message" className="col-span-full w-full !border-white bg-white text-dark2 focus:!border-gray-300" />
                     </div>
                     <Button type="submit" className="mt-6 w-full bg-accent" size="lg">
-                        Order Confirm
+                        Booking Confirm
                     </Button>
                 </form>
             </Card>

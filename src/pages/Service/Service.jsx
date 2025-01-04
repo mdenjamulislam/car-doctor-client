@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { FaArrowRight, FaDownload } from "react-icons/fa6";
 import { FaRegFilePdf } from "react-icons/fa";
-import breadcrumbsBg from "../../assets/breadcrumbs.png";
+import Breadcrumb from "../../components/shared/Breadcrumb";
+
 
 const Service = () => {
     const [serviceTitle, setServiceTitle] = useState([]);
@@ -19,24 +20,7 @@ const Service = () => {
     console.log(serviceTitle);
     return (
         <div className="container">
-            <div className="relative overflow-hidden rounded-lg bg-cover bg-center" style={{ backgroundImage: `url(${img})` }}>
-                <div className="flex flex-col items-center justify-center bg-overlay-dark">
-                    <div className="px-5 py-10 md:px-12 lg:px-24 lg:py-28">
-                        <h1 className="heading-one text-white">{title}</h1>
-                    </div>
-                    <div className="bottom-0 inline-flex w-auto bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${breadcrumbsBg})` }}>
-                        <div className="flex items-center gap-2 px-8 py-2 text-white">
-                            <Link to="/" className="hover:underline">
-                                Home
-                            </Link>
-                            /
-                            <Link to={`/services/{$_id}`} className="opacity-60 hover:underline hover:opacity-100">
-                                {title}
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Breadcrumb title={title} bg={img} />
             <div className="my-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
                 <div className="col-span-full space-y-4 md:space-y-6 lg:col-span-2">
                     <figure>

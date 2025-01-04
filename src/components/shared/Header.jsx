@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, MobileNav, Typography, Button, IconButton, Card } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { IoSearch, IoClose } from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
+import UserAvatar from "../Header/UserAvatar";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const closeMenu = () => setIsMenuOpen(false);
     const [openNav, setOpenNav] = React.useState(false);
+    const { user } = useContext(AuthContext);
 
     React.useEffect(() => {
         window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
@@ -43,7 +48,7 @@ const Header = () => {
     );
     return (
         <header className="">
-            <Navbar className="h-max max-w-full rounded-none px-4 py-3 lg:px-8 lg:py-6 shadow-none">
+            <Navbar className="h-max max-w-full rounded-none px-4 py-3 shadow-none lg:px-8 lg:py-6">
                 <div className="container">
                     <div className="flex items-center justify-between text-blue-gray-900">
                         <Link to="/">
@@ -55,9 +60,15 @@ const Header = () => {
                                 <button className="text-2xl">
                                     <AiOutlineShopping />
                                 </button>
-                                <button className="text-2xl">
-                                    <IoSearch />
-                                </button>
+                                {user ? (
+                                    <UserAvatar />
+                                ) : (
+                                    <Link to="/login">
+                                        <Button variant="filled" className="bg-accent border-accent text-white">
+                                            <span>Login</span>
+                                        </Button>
+                                    </Link>
+                                )}
                                 <Button variant="outlined" className="hidden border-accent text-accent lg:inline-block">
                                     <span>Appointment</span>
                                 </Button>

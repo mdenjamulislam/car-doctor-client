@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, MobileNav, Typography, Button, IconButton, Card } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { IoSearch, IoClose } from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
+import { CiUser, CiLogin } from "react-icons/ci";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {
@@ -43,7 +46,7 @@ const Header = () => {
     );
     return (
         <header className="">
-            <Navbar className="h-max max-w-full rounded-none px-4 py-3 lg:px-8 lg:py-6 shadow-none">
+            <Navbar className="h-max max-w-full rounded-none px-4 py-3 shadow-none lg:px-8 lg:py-6">
                 <div className="container">
                     <div className="flex items-center justify-between text-blue-gray-900">
                         <Link to="/">
@@ -52,12 +55,23 @@ const Header = () => {
                         <div className="mr-4 hidden lg:block">{navList}</div>
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-x-3">
-                                <button className="text-2xl">
-                                    <AiOutlineShopping />
-                                </button>
-                                <button className="text-2xl">
-                                    <IoSearch />
-                                </button>
+                                {user ? (
+                                    <>
+                                        <Link to="/booking" className="text-2xl">
+                                            <AiOutlineShopping />
+                                        </Link>
+                                        <Link to="" className="text-2xl">
+                                            <CiUser />
+                                        </Link>
+                                    </>
+                                ) : (
+                                    <Link to="/login">
+                                        <Button variant="filled" className="flex items-center gap-2 rounded-md bg-accent text-white">
+                                            <CiLogin />
+                                            <span>Login</span>
+                                        </Button>
+                                    </Link>
+                                )}
                                 <Button variant="outlined" className="hidden border-accent text-accent lg:inline-block">
                                     <span>Appointment</span>
                                 </Button>

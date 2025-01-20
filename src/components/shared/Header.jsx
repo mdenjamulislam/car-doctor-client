@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { IoSearch, IoClose } from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
-import UserAvatar from "../Header/UserAvatar";
-import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const closeMenu = () => setIsMenuOpen(false);
     const [openNav, setOpenNav] = React.useState(false);
     const { user } = useContext(AuthContext);
 
@@ -60,15 +56,9 @@ const Header = () => {
                                 <button className="text-2xl">
                                     <AiOutlineShopping />
                                 </button>
-                                {user ? (
-                                    <UserAvatar />
-                                ) : (
-                                    <Link to="/login">
-                                        <Button variant="filled" className="bg-accent border-accent text-white">
-                                            <span>Login</span>
-                                        </Button>
-                                    </Link>
-                                )}
+                                <button className="text-2xl">
+                                    <IoSearch />
+                                </button>
                                 <Button variant="outlined" className="hidden border-accent text-accent lg:inline-block">
                                     <span>Appointment</span>
                                 </Button>

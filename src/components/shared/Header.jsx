@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { IoSearch, IoClose } from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Header = () => {
     const [openNav, setOpenNav] = React.useState(false);

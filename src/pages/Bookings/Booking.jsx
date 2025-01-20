@@ -1,12 +1,14 @@
 import { Button, IconButton } from "@material-tailwind/react";
 import { IoMdClose } from "react-icons/io";
 
-const Booking = ({ booking }) => {
+
+const Booking = ({ booking, handleCancle }) => {
     const { _id, sercieTitle, img, price, date } = booking;
+
     return (
-        <div className="flex items-center justify-between border border-dark6 p-4 rounded-lg">
+        <div className="flex items-center justify-between rounded-lg border border-dark6 p-4">
             <div className="flex items-center gap-4">
-                <IconButton className="rounded-full">
+                <IconButton onClick={() => handleCancle(_id)} className="rounded-full">
                     <IoMdClose />
                 </IconButton>
                 <figure>

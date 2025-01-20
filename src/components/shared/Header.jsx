@@ -5,6 +5,8 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { IoSearch, IoClose } from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
 import { AuthContext } from "../../providers/AuthProvider";
+import { CiUser } from "react-icons/ci";
+
 
 const Header = () => {
     const [openNav, setOpenNav] = React.useState(false);
@@ -54,12 +56,22 @@ const Header = () => {
                         <div className="mr-4 hidden lg:block">{navList}</div>
                         <div className="flex items-center gap-6">
                             <div className="flex items-center gap-x-3">
-                                <button className="text-2xl">
-                                    <AiOutlineShopping />
-                                </button>
-                                <button className="text-2xl">
-                                    <IoSearch />
-                                </button>
+                                {user ? (
+                                    <>
+                                        <Link to="/booking" className="text-2xl">
+                                            <AiOutlineShopping />
+                                        </Link>
+                                        <button className="text-2xl">
+                                            <CiUser />
+                                        </button>
+                                    </>
+                                ) : (
+                                    <Link to="/login">
+                                        <Button variant="filled" className="bg-accent text-white">
+                                            Login
+                                        </Button>
+                                    </Link>
+                                )}
                                 <Button variant="outlined" className="hidden border-accent text-accent lg:inline-block">
                                     <span>Appointment</span>
                                 </Button>

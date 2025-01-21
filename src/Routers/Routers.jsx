@@ -8,6 +8,7 @@ import Checkout from "../pages/Checkout/Checkout";
 import Bookings from "../pages/Bookings/Bookings";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Services from "../pages/Service/AllServices";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: "/signup",
                 element: <Signup />,
+            },
+            {
+                path: "/services",
+                element: <Services />
             },
             {
                 path: "/services/:id",

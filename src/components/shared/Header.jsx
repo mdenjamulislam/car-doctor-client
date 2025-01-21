@@ -29,7 +29,7 @@ const Header = () => {
                 </Link>
             </Typography>
             <Typography as="li">
-                <Link to="/service" className="text-base font-semibold text-dark2 md:text-lg">
+                <Link to="/services" className="text-base font-semibold text-dark2 md:text-lg">
                     Services
                 </Link>
             </Typography>

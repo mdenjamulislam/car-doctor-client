@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Navbar, MobileNav, Typography, Button, IconButton, Card } from "@material-tailwind/react";
+import { Navbar, MobileNav, Typography, Button, IconButton, Card, Menu, MenuHandler, MenuList, MenuItem } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { IoSearch, IoClose } from "react-icons/io5";
@@ -7,10 +7,9 @@ import { RiMenu3Line } from "react-icons/ri";
 import { AuthContext } from "../../providers/AuthProvider";
 import { CiUser } from "react-icons/ci";
 
-
 const Header = () => {
     const [openNav, setOpenNav] = React.useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     React.useEffect(() => {
         window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
@@ -61,9 +60,27 @@ const Header = () => {
                                         <Link to="/booking" className="text-2xl">
                                             <AiOutlineShopping />
                                         </Link>
-                                        <button className="text-2xl">
-                                            <CiUser />
-                                        </button>
+                                        <Menu
+                                            animate={{
+                                                mount: { y: 0 },
+                                                unmount: { y: 25 },
+                                            }}
+                                        >
+                                            <MenuHandler>
+                                                <Button variant="text" className="p-2 bg-none">
+                                                    <CiUser className="text-2xl" />
+                                                </Button>
+                                            </MenuHandler>
+                                            <MenuList>
+                                                <MenuItem>Profile</MenuItem>
+                                                <MenuItem>
+                                                    <Link to="/booking">Booking</Link>
+                                                </MenuItem>
+                                                <MenuItem>
+                                                    <Link onClick={logOut}>Logout</Link>
+                                                </MenuItem>
+                                            </MenuList>
+                                        </Menu>
                                     </>
                                 ) : (
                                     <Link to="/login">

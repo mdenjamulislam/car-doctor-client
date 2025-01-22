@@ -29,7 +29,7 @@ const Footer = () => {
                             <img src="https://i.ibb.co.com/R6g8D7N/Group-1.png" alt="" />
                             <h5 className="font-semibold text-white">Car Doctor</h5>
                         </div>
-                        <p className="text-dark6">Edwin Diaz is a software and web technologies engineer, a life coach trainer who is also a serial .</p>
+                        <p className="text-dark6">Car Doctor is a software and web technologies engineer, a life coach trainer who is also a serial .</p>
                         <div className="flex items-center gap-2">
                             <IconButton className="rounded-full">
                                 <FaFacebookF />
